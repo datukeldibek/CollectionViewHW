@@ -79,6 +79,7 @@
 		0D4CD10F2A039BC20085DBCB /* CollectionViewHW */ = {
 			isa = PBXGroup;
 			children = (
+				0D4CD12A2A039D350085DBCB /* Resources */,
 				0D4CD1282A039D230085DBCB /* App */,
 				0D4CD12B2A039D690085DBCB /* View */,
 				0D4CD1162A039BC20085DBCB /* Main.storyboard */,
@@ -94,7 +95,6 @@
 			children = (
 				0D4CD1102A039BC20085DBCB /* AppDelegate.swift */,
 				0D4CD1122A039BC20085DBCB /* SceneDelegate.swift */,
-				0D4CD12A2A039D350085DBCB /* Resources */,
 			);
 			path = App;
 			sourceTree = "<group>";

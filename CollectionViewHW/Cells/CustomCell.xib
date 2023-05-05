@@ -26,6 +26,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FbQ-ng-f5d">
                         <rect key="frame" x="23" y="208" width="57" height="31"/>
                         <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="190" id="RR1-9S-d5l"/>
                             <constraint firstAttribute="height" constant="31" id="jsV-bE-i5Z"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="24"/>

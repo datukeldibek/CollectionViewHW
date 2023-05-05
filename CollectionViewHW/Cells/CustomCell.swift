@@ -26,11 +26,3 @@ class CustomCell: UITableViewCell {
         desc.text = item.description
     }
 }
-
-//        let url = URL(string: item.thumbnail)!
-//        DispatchQueue.global().async {
-//            let data = try? Data(contentsOf: url!)
-//            DispatchQueue.main.async {
-//                self.imageTV.image = UIImage(data: data!)
-//            }
-//        }

@@ -34,6 +34,8 @@ class ViewController: UIViewController {
     ]
     private let networkService = NetworkService()
     private var products: [Product] = []
+    private var filteredProducts: [Product] = []
+    private var isFiltered: Bool = false
     
     
     override func viewDidLoad() {
@@ -52,6 +54,9 @@ class ViewController: UIViewController {
             ),
             forCellReuseIdentifier: CustomCell.reuseId
         )
+        
+        //searchBar delegate
+        searchBar.delegate = self
     }
     private func configureCollectionView() {
         collectionViewA.dataSource = self
@@ -118,7 +123,6 @@ extension ViewController:
         )
             return cell
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -133,13 +137,12 @@ extension ViewController:
 //MARK: - UITableViewDataSource / Delegate
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        products.count
+        isFiltered ? filteredProducts.count : products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.reuseId, for: indexPath) as! CustomCell
-        let model = products[indexPath.row]
-        print(model)
+        let model = isFiltered ? filteredProducts[indexPath.row] : products[indexPath.row]
         cell.display(item: model)
         return cell
     }
@@ -148,3 +151,18 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         330
     }
 }
+
+//MARK: - extension for searchbar
+extension ViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            isFiltered = false
+        } else {
+            isFiltered = true
+            filteredProducts = products.filter{ $0.title.lowercased().contains(searchText.lowercased()) }
+        }
+        tableView.reloadData()
+    }
+}
+
